@@ -1,0 +1,15 @@
+.left-content{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .left-topone{
+       width: 100%;
+       height: vh(149.714);
+       margin-top: vh(11);
+    }
+    .left-bottomone{
+        flex: 1;
+        border:vw(1) solid rgba(18,85,154,1);
+     }
+}
