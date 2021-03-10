@@ -808,6 +808,8 @@ export default class center extends Vue {
 		const data: any = this.workOrderObjData[code]
 
 		const statusData: any = this.judgeStatus(code, data.sheetStatus, data) // 格式状态
+		let dispatchs: any=data.dispatchReceive
+		let codets: any=data.sheetCode
 		let detailsTexts: any = [
 			{
 				key: '单号',
@@ -909,6 +911,8 @@ export default class center extends Vue {
 				detailsImgs2, // 处理照片
 				detailsImgs3, // 处理照片
 				detailsTexts, // 处理记录
+				codets:codets,
+				dispatchs,
 				voList: data.voList[0],
 				voList1: data.voList
 			}

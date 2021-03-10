@@ -38,7 +38,7 @@
           </div>
           <div class="msgList qiehuan">
             <span class="left-f glabfont">处理单位：</span>
-            <div class="left-r glabfont">
+            <div class="left-r glabfont" v-if="!workOrderDisposeData.codets.includes('-JJWCYZX-')">
               <div
                 style="margin-right: 6px"
                 @click="
@@ -52,7 +52,9 @@
                   item.dealCompany
                 }}</span>
               </div>
+              
             </div>
+            <div class="left-r glabfont" v-else>{{workOrderDisposeData.dispatchs}}</div>
           </div>
           <div
             class="msgList"
