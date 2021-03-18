@@ -45,6 +45,10 @@ export default class leftTop extends Vue {
     {
       id: 3,
       name: "哈啰",
+    },
+    {
+      id: 4,
+      name: "青桔",
     }
   ];
   private shudata1: any = [
@@ -88,7 +92,10 @@ export default class leftTop extends Vue {
       this.getKeyArea1("美团","#FF9D5E","#FF8434")
     }else if(row.id==3){
       this.getKeyArea1("哈啰","#3CB1F7","#5C73FF")
-    }else{
+    }else if(row.id==4){
+      this.getKeyArea1("青桔","#73E6DF","#00B0A4")
+    }
+    else{
       this.getKeyArea()
     }
 

@@ -361,7 +361,7 @@ export default class center extends Vue {
 			code: '05ofo'
 		},
 		{
-			name: '哈罗',
+			name: '哈啰',
 			code: '03hellobike'
 		}
 	]

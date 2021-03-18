@@ -4,6 +4,9 @@
      <span class="borderw"></span>
      <span class="msgfont glabfont">{{msg}}</span>
    </div>
+   <div class="foex-right">
+     <slot></slot>
+   </div>
   </div>
 </template>
 
@@ -20,6 +23,7 @@ export default class BorderBlock extends Vue {
 .quadrangle {
   // width: 100%;
   display: flex;
+  justify-content: space-between;
   .boederh{
     display: flex;
     align-items: center;
@@ -33,6 +37,10 @@ export default class BorderBlock extends Vue {
     width:vw(3);
     height:vh(10);
     background:rgba(3,241,250,1);
+  }
+  .foex-right{
+    display: flex;
+    align-items: center;
   }
  
 }

@@ -48,7 +48,7 @@
                 v-for="(item, index) in workOrderDisposeData.voList1"
                 :key="index"
               >
-                <span :style="{ color: index == 0 ? '#f9b436' : '#11a6ff' }">{{
+                <span :style="{ color: item.dealCompany == '美团' ? '#f9b436' :item.dealCompany == '哈啰'? '#11a6ff':'#4DC5BC' }">{{
                   item.dealCompany
                 }}</span>
               </div>

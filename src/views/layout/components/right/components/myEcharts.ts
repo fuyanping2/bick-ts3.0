@@ -3,6 +3,7 @@ import echarts from 'echarts';
 export default class MyEcharts {
   public disContainer1: any = null;
   public disContainer2: any = null;
+  public disContainer3: any = null;
 
   constructor() {
     this.initEcharts();
@@ -15,6 +16,9 @@ export default class MyEcharts {
 
     const disContainer2: any = document.querySelector('#disContainer2');
     this.disContainer2 = echarts.init(disContainer2);
+
+    const disContainer3: any = document.querySelector('#disContainer3');
+    this.disContainer3 = echarts.init(disContainer3);
 
     
 

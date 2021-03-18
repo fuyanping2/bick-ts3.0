@@ -18,7 +18,8 @@
           style="border-right: 1px solid #0c3a6f; margin-top: 1vh"
         >
           <span class="ljnum glabfont">车辆数</span>
-          <div class="scrollnumsa" @click="$store.state.isimg = 7">
+          <div class="scrollnumsa">
+          <!-- <div class="scrollnumsa" @click="$store.state.isimg = 7"> -->
             <scroll-num :datanum="allnum2" :mycolor="mycolor"></scroll-num>
           </div>
           <span class="ljnum glabfont">起</span>
@@ -31,7 +32,8 @@
             输入车辆数(辆)
           </div>
           <div class="num-box">
-            <div class="rloes-box3" @click="$store.state.isimg = 10">
+            <div class="rloes-box3">
+            <!-- <div class="rloes-box3" @click="$store.state.isimg = 10"> -->
               <span style="color: #ffffff" class="ljnum glabfont">上月</span>
               <span class="scrollnumsa glabfont">843</span>
             </div>
@@ -55,7 +57,8 @@
               <span style="color: #ffffff" class="ljnum glabfont">上月</span>
               <span class="scrollnumsa glabfont">0</span>
             </div>
-            <div class="rloes-box3" @click="$store.state.isimg = 12">
+             <div class="rloes-box3">
+            <!-- <div class="rloes-box3" @click="$store.state.isimg = 12"> -->
               <span style="color: #ffffff" class="ljnum glabfont"
                 >今年累计</span
               >
@@ -97,17 +100,24 @@
               <span class="fonsinum1 glabfont">{{ score2 }}</span>
               <span class="fonsinum2 glabfont">分</span>
             </div>
+            <div class="imgfraction1 imgfraction2">
+              <div class="border-top"></div>
+              <div class="rank-barIn2" :style="{ height: score3 + '%' }"></div>
+              <span class="fonsinum1 glabfont">{{ score3 }}</span>
+              <span class="fonsinum2 glabfont">分</span>
+            </div>
           </div>
           <div class="numde">
             <span class="gont2 glabfont">美团</span>
             <span class="gont2 glabfont">哈啰</span>
+            <span class="gont2 glabfont">青桔</span>
           </div>
         </div>
       </div>
       <borderBlock :msg="msgvide1" style="margin-top: 2vh"></borderBlock>
       <div class="tableboxwork">
         <div class="left-ech" id="echLef"></div>
-        <div style="width: 30%">
+        <div style="width:50%">
           <div class="fv glabfont">企业投诉占比(近一年)</div>
           <div class="workOrderBox">
             <div class="workOrderBox-item">
@@ -120,6 +130,12 @@
               <div class="echart-content" id="disContainer2"></div>
               <div class="name-text glabfont" style="color: #29b2ee">
                 哈啰:105
+              </div>
+            </div>
+            <div class="workOrderBox-item">
+              <div class="echart-content" id="disContainer3"></div>
+              <div class="name-text glabfont" style="color:#73E6DF">
+                青桔:0
               </div>
             </div>
           </div>
@@ -172,8 +188,16 @@ export default class rightTop extends Vue {
     unVal: 55.4,
     color: ['#70A7E0', '#4F505D'],
   }
+    private rihtBoxData2: any = {
+    el: 'disContainer3',
+    value: 0,
+    name: '1',
+    unVal: 100,
+    color: ['#73E6DF', '#4F505D'],
+  }
   private score1: number = 0
   private score2: number = 0
+  private score3: number = 0
   private msgconcat1: string = '企业工单处置得分 (历史7天)'
   private msgvide3: string = '集中停放'
   private isshowimg: boolean = false
@@ -203,6 +227,7 @@ export default class rightTop extends Vue {
     MyEchart4 = new Echartsa()
     MyEchart4.echartsOption(this.rihtBoxData)
     MyEchart4.echartsOption(this.rihtBoxData1)
+    MyEchart4.echartsOption(this.rihtBoxData2)
   }
   public created() {
     this.getScoreEchart()
@@ -222,6 +247,9 @@ export default class rightTop extends Vue {
     API.getBicyCleScore().then((res: any): void => {
       this.score1 = res.avg[0].avgScore
       this.score2 = res.avg[1].avgScore
+      if(res.avg[2]){
+        this.score3 = res.avg[2].avgScore
+      }
       res.result.forEach((iteam: any) => {
         this.companydata.x.push(iteam.createTime)
         this.companydata.data1.push(iteam.list[0].score)
@@ -397,7 +425,7 @@ export default class rightTop extends Vue {
     height: vh(85);
     margin-top: vh(5);
     .echart1 {
-      width: 70%;
+      width: 60%;
       height: 100%;
       .echartone {
         width: 100%;
@@ -415,7 +443,7 @@ export default class rightTop extends Vue {
         justify-content: space-between;
         width: 100%;
         box-sizing: border-box;
-        padding: 0 vw(20);
+        padding: 0 vw(5);
         position: relative;
 
         .borfon {
@@ -461,6 +489,13 @@ export default class rightTop extends Vue {
             width: 100%;
             background: linear-gradient(to bottom, #36d7ff 0%, #003cb7 100%);
           }
+          .rank-barIn2 {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: linear-gradient(to bottom, #73E6DF 0%, #00B0A4 100%);
+          }
           .fonsinum1 {
             font-size: vw(21);
             z-index: 30;
@@ -475,6 +510,7 @@ export default class rightTop extends Vue {
           }
         }
         .imgfraction2 {
+          margin-left: vw(6);
           border: vw(1) solid #36d7ff;
         }
       }
