@@ -842,7 +842,7 @@ export default class center extends Vue {
 			if (type === 1) {
 				// 工单详情的图片数组
 				detailsImgs3 = data.dispatchPhotoURLs.map((item: any) => {
-					return 'http://101.132.45.201:18088/' + item
+					return 'https://bicycle.itcics.com:18089/' + item
 				})
 
 				if (data.sheetStatus === -1) {
@@ -853,7 +853,7 @@ export default class center extends Vue {
 				}
 			} else {
 				// 治理轮循的图片单张
-				roundRobinimg = 'http://101.132.45.201:18088/' + data.dispatchPhotoURLs[0]
+				roundRobinimg = 'https://bicycle.itcics.com:18089/' + data.dispatchPhotoURLs[0]
 			}
 		} else if (data.sheetStatus === 2 || data.sheetStatus === 4) {
 			// const addDetailsTexts = [
@@ -888,16 +888,16 @@ export default class center extends Vue {
 				data.voList.forEach((item: any) => {
 					dispatchReceive = statusData.isDespatch ? item.dispatchReceive : item.dispatchOrgName
 					item.dispatchBeforePhotoURLs.forEach((beforeItem: any) => {
-						detailsImgs1.push('http://101.132.45.201:18088/' + beforeItem)
+						detailsImgs1.push('https://bicycle.itcics.com:18089/' + beforeItem)
 					})
 					item.dispatchAfterPhotoURLs.forEach((afterItem: any) => {
-						detailsImgs2.push('http://101.132.45.201:18088/' + afterItem)
+						detailsImgs2.push('https://bicycle.itcics.com:18089/' + afterItem)
 					})
 				})
 			} else {
 				// 治理轮循的图片单张
 				roundRobinimg =
-					'http://101.132.45.201:18088/' + data.voList[data.voList.length - 1].dispatchAfterPhotoURLs[0]
+					'https://bicycle.itcics.com:18089/' + data.voList[data.voList.length - 1].dispatchAfterPhotoURLs[0]
 			}
 		}
 

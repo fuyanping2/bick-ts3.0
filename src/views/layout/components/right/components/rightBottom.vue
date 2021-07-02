@@ -123,19 +123,19 @@
             <div class="workOrderBox-item">
               <div class="echart-content" id="disContainer1"></div>
               <div class="name-text glabfont" style="color: #f9b436">
-                美团:129
+                美团:{{mudata2[1].receiveCount}}
               </div>
             </div>
             <div class="workOrderBox-item">
               <div class="echart-content" id="disContainer2"></div>
               <div class="name-text glabfont" style="color: #29b2ee">
-                哈啰:105
+                哈啰:{{mudata2[0].receiveCount}}
               </div>
             </div>
             <div class="workOrderBox-item">
               <div class="echart-content" id="disContainer3"></div>
               <div class="name-text glabfont" style="color:#73E6DF">
-                青桔:0
+                青桔:{{mudata2[2].receiveCount}}
               </div>
             </div>
           </div>
@@ -171,14 +171,26 @@ export default class rightTop extends Vue {
     data2: [],
   }
   private mudata: any = []
+  private mudata1: any = []
+  private mudata2: any = [
+    {
+      receiveCount:0
+    },
+    {
+      receiveCount:0
+    },
+    {
+      receiveCount:0
+    }
+  ]
   // private allnum2: any = [5,3,2,7,2];
   private allnum2: any = [8, 6, 1, 0, 1]
   private mycolor: string = '#13B2FE'
   private rihtBoxData: any = {
     el: 'disContainer1',
-    value: 55.4,
+    value: 0,
     name: '1',
-    unVal: 44.6,
+    unVal: 0,
     color: ['#f9b436', '#4F505D'],
   }
   private rihtBoxData1: any = {
@@ -225,9 +237,8 @@ export default class rightTop extends Vue {
 
   private getnumEchart(): void {
     MyEchart4 = new Echartsa()
-    MyEchart4.echartsOption(this.rihtBoxData)
-    MyEchart4.echartsOption(this.rihtBoxData1)
-    MyEchart4.echartsOption(this.rihtBoxData2)
+    
+    
   }
   public created() {
     this.getScoreEchart()
@@ -255,10 +266,37 @@ export default class rightTop extends Vue {
         this.companydata.data1.push(iteam.list[0].score)
         this.companydata.data2.push(iteam.list[1].score)
       })
-      this.mudata = this.companydata.x
-      this.echartsOption3()
+      // this.mudata = this.companydata.x
+      
       MyEchart3 = new Echart2()
       MyEchart3.echartsOption1(this.companydata)
+    })
+
+    API.getRightNum().then((res: any): void => {
+      
+      
+      res.list.forEach((itam: any) => {
+        this.mudata.push(itam.day)
+        this.mudata1.push(itam.num)
+      })
+      this.echartsOption3()
+
+
+      let datacompaby=JSON.parse(res.company)
+      this.mudata2=datacompaby
+      console.log(datacompaby)
+      let num1=(((this.mudata2[1].receiveCount)/((this.mudata2[1].receiveCount)+(this.mudata2[0].receiveCount)+(this.mudata2[2].receiveCount)))*100).toFixed(1)
+      let num2=(((this.mudata2[0].receiveCount)/((this.mudata2[1].receiveCount)+(this.mudata2[0].receiveCount)+(this.mudata2[2].receiveCount)))*100).toFixed(1)
+      let num3=(((this.mudata2[2].receiveCount)/((this.mudata2[1].receiveCount)+(this.mudata2[0].receiveCount)+(this.mudata2[2].receiveCount)))*100).toFixed(1)
+      this.rihtBoxData.value=num1
+      this.rihtBoxData.unVal=100-this.rihtBoxData.value
+      this.rihtBoxData1.value=num2
+      this.rihtBoxData1.unVal=100-this.rihtBoxData1.value
+      this.rihtBoxData2.value=num3
+      this.rihtBoxData2.unVal=100-this.rihtBoxData2.value
+      MyEchart4.echartsOption(this.rihtBoxData)
+      MyEchart4.echartsOption(this.rihtBoxData1)
+      MyEchart4.echartsOption(this.rihtBoxData2)
     })
   }
 
@@ -323,7 +361,7 @@ export default class rightTop extends Vue {
             color: '#12559A',
           },
         },
-        max: 240,
+        // max: 240,
         axisLabel: {
           show: true,
           fontSize: 20, //调整数值改变倾斜的幅度（范围-90到90）
@@ -345,7 +383,7 @@ export default class rightTop extends Vue {
       },
       series: [
         {
-          data: [110, 132, 111, 134, 140, 125, 120],
+          data: this.mudata1,
           type: 'line',
           areaStyle: {
             color: new echarts.graphic.LinearGradient(0, 0, 0, 1, [

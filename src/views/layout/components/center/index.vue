@@ -105,10 +105,10 @@
                 ></el-image> -->
 
                 <el-popover placement="left" trigger="hover">
-                  <img :src="'http://101.132.45.201:18088/' + item" />
+                  <img :src="'https://bicycle.itcics.com:18089/' + item" />
                   <el-image
                     style="width: 40px; height: 64px"
-                    :src="'http://101.132.45.201:18088/' + item"
+                    :src="'https://bicycle.itcics.com:18089/' + item"
                     slot="reference"
                   ></el-image>
                 </el-popover>
@@ -134,10 +134,10 @@
                 ></el-image> -->
 
                 <el-popover placement="left" trigger="hover">
-                  <img :src="'http://101.132.45.201:18088/' + item" />
+                  <img :src="'https://bicycle.itcics.com:18089/' + item" />
                   <el-image
                     style="width: 40px; height: 64px"
-                    :src="'http://101.132.45.201:18088/' + item"
+                    :src="'https://bicycle.itcics.com:18089/' + item"
                     slot="reference"
                   ></el-image>
                 </el-popover>

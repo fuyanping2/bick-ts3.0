@@ -7,7 +7,8 @@
           <span class="num glabfont" style="color: rgba(19, 178, 254, 1)">
             {{
             parseFloat(signsData.streetBicycleNum[1]) +
-            parseFloat(signsData.streetBicycleNum[2])
+            parseFloat(signsData.streetBicycleNum[2])+
+            parseFloat(signsData.streetBicycleNum[0])
             }}
           </span>
         </div>
@@ -16,7 +17,8 @@
           <span style="color: #1ee5ae" class="num glabfont">
             {{
             parseFloat(signsData.companyActiveNum[1]) +
-            parseFloat(signsData.companyActiveNum[2])
+            parseFloat(signsData.companyActiveNum[2])+
+            parseFloat(signsData.companyActiveNum[0])
             }}
           </span>
         </div>
@@ -30,9 +32,11 @@
             {{
             (
             ((parseFloat(signsData.companyActiveNum[1]) +
-            parseFloat(signsData.companyActiveNum[2])) /
+            parseFloat(signsData.companyActiveNum[2]) +
+            parseFloat(signsData.companyActiveNum[0])) /
             (parseFloat(signsData.streetBicycleNum[1]) +
-            parseFloat(signsData.streetBicycleNum[2]))) *
+            parseFloat(signsData.streetBicycleNum[2]) +
+            parseFloat(signsData.streetBicycleNum[0]))) *
             100
             ).toFixed(2) + '%'
             }}

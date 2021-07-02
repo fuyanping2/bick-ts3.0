@@ -31,7 +31,7 @@ export default {
    */
 	getKeyArea(): Promise<{}> {
 		return http(
-			'http://101.132.45.201:18181/sharebikesclean/position/findChildOrgActiveRange/jCoQfQWsUWlpRyWLQxmgdA%3D%3D'
+			'https://bicycle.itcics.com/sharebikesclean/position/findChildOrgActiveRange/jCoQfQWsUWlpRyWLQxmgdA%3D%3D'
 		)
 	},
 	/**
@@ -39,7 +39,7 @@ export default {
  */
 	getKeyArea1(companyName: any): Promise<{}> {
 		return http(
-			'http://101.132.45.201:18181/sharebikesclean/position/findChildOrgActiveRangeByCompany/jCoQfQWsUWlpRyWLQxmgdA%3D%3D',
+			'https://bicycle.itcics.com/sharebikesclean/position/findChildOrgActiveRangeByCompany/jCoQfQWsUWlpRyWLQxmgdA%3D%3D',
 			{
 				params: {
 					companyName
@@ -54,7 +54,7 @@ export default {
    */
 	getPeak(startTime: string, endTime: string): Promise<{}> {
 		return http(
-			'http://101.132.45.201:18181/sharebikesclean/kpHour/calOrgKeyRegionHotBicycleNum/jCoQfQWsUWlpRyWLQxmgdA%3D%3D',
+			'https://bicycle.itcics.com/sharebikesclean/kpHour/calOrgKeyRegionHotBicycleNum/jCoQfQWsUWlpRyWLQxmgdA%3D%3D',
 			{
 				params: {
 					startTime,
@@ -70,7 +70,7 @@ export default {
    */
 	getWorkOrderDetails(beginDay: string, endDay: string): Promise<{}> {
 		return http(
-			'http://101.132.45.201:18181/sharebikesclean/bikeDispatch/dispatchList/jCoQfQWsUWlpRyWLQxmgdA%3D%3D',
+			'https://bicycle.itcics.com/sharebikesclean/bikeDispatch/dispatchList/jCoQfQWsUWlpRyWLQxmgdA%3D%3D',
 			{
 				params: {
 					beginDay,
@@ -83,18 +83,22 @@ export default {
    * 获取区域边界及中心点坐标（高德坐标）
    */
 	getDistrictBoundary(): Promise<{}> {
-		return http('http://101.132.45.201:18181/sharebikesclean/boundary/findOrgBoundary/jCoQfQWsUWlpRyWLQxmgdA%3D%3D')
+		return http('https://bicycle.itcics.com/sharebikesclean/boundary/findOrgBoundary/jCoQfQWsUWlpRyWLQxmgdA%3D%3D')
 	},
 	// 获取左侧运行体征（活跃数和活跃量）
 	getActiveNum() {
-		return http('http://101.132.45.201:18181/sharebikesclean/platform/getBikeNum?orgId=1057')
+		return http('https://bicycle.itcics.com/sharebikesclean/platform/getBikeNum?orgId=1057')
+	},
+	// 获取右侧投诉的表
+	getRightNum() {
+		return http('https://bicycle.itcics.com/sharebikesclean/bikeDispatch/dispatchCount/jCoQfQWsUWlpRyWLQxmgdA%3D%3D')
 	},
 	/**
    * 获取街镇边界及中心点坐标
    */
 	getAreaBoundary(): Promise<{}> {
 		return http(
-			'http://101.132.45.201:18181/sharebikesclean/boundary/findOrgChildBoundary/jCoQfQWsUWlpRyWLQxmgdA%3D%3D'
+			'https://bicycle.itcics.com/sharebikesclean/boundary/findOrgChildBoundary/jCoQfQWsUWlpRyWLQxmgdA%3D%3D'
 		)
 	},
 	/**
@@ -102,7 +106,7 @@ export default {
    */
 	getBicyClePosition(companyCode: string = ''): Promise<{}> {
 		return http(
-			'http://101.132.45.201:18181/sharebikesclean/position/findAllOrgBikeHotGraph/jCoQfQWsUWlpRyWLQxmgdA%3D%3D',
+			'https://bicycle.itcics.com/sharebikesclean/position/findAllOrgBikeHotGraph/jCoQfQWsUWlpRyWLQxmgdA%3D%3D',
 			{
 				params: {
 					companyCode
@@ -114,7 +118,7 @@ export default {
    * 单车评分
    */
 	getBicyCleScore(): Promise<{}> {
-		return http('http://101.132.45.201:18181/sharebikesclean/platform/evaluateResult')
+		return http('https://bicycle.itcics.com/sharebikesclean/platform/evaluateResult')
 	},
 
 	/**
@@ -140,7 +144,7 @@ export default {
 		sheetStatus: string = ''
 	): Promise<{}> {
 		return http(
-			'http://101.132.45.201:18181/sharebikesclean/bikeDispatch/findBikeDispatchByAreaIdAndDate/jCoQfQWsUWlpRyWLQxmgdA%3D%3D',
+			'https://bicycle.itcics.com/sharebikesclean/bikeDispatch/findBikeDispatchByAreaIdAndDate/jCoQfQWsUWlpRyWLQxmgdA%3D%3D',
 			{
 				params: {
 					startDate,
@@ -152,14 +156,14 @@ export default {
 			}
 		)
 	},
-	// 重点区域的数据 http://101.132.45.201:18181/sharebikesclean/countJieZhen/getPointMsg?regionId=1000&areaId=1057
+	// 重点区域的数据 https://bicycle.itcics.com/sharebikesclean/countJieZhen/getPointMsg?regionId=1000&areaId=1057
 	getKeyAreas(): Promise<{}> {
-		return http('http://101.132.45.201:18181/sharebikesclean//countJieZhen/getAreaPointMsg1?regionId=1000')
+		return http('https://bicycle.itcics.com/sharebikesclean//countJieZhen/getAreaPointMsg1?regionId=1000')
 	},
-	//收集区的数据 http://101.132.45.201:18181/sharebikesclean/countJieZhen/getPointMsg?regionId=1003&areaId=1057
+	//收集区的数据 https://bicycle.itcics.com/sharebikesclean/countJieZhen/getPointMsg?regionId=1003&areaId=1057
 	getCollect(): Promise<{}> {
 		return http(
-			'http://101.132.45.201:18181/sharebikesclean/countJieZhen/getAreaPointMsg1?regionId=1003&areaId=1057'
+			'https://bicycle.itcics.com/sharebikesclean/countJieZhen/getAreaPointMsg1?regionId=1003&areaId=1057'
 		)
 	},
 	/**
@@ -175,7 +179,7 @@ export default {
 	},
 	// 智能发现 /platform/foundList?orgId=1057
 	getIntelligent(params: any): Promise<{}> {
-		return http('http://101.132.45.201:18181/sharebikesclean/platform/foundList?orgId=1057', {
+		return http('https://bicycle.itcics.com/sharebikesclean/platform/foundList?orgId=1057', {
 			params
 		})
 	},
@@ -246,23 +250,23 @@ export default {
    */
 	getForbid(params: any): Promise<{}> {
 		return http(
-			'http://101.132.45.201:18181/sharebikesclean/boundary/findOrgJtRegionBoundaryAndBikeNum/jCoQfQWsUWlpRyWLQxmgdA%3D%3D',
+			'https://bicycle.itcics.com/sharebikesclean/boundary/findOrgJtRegionBoundaryAndBikeNum/jCoQfQWsUWlpRyWLQxmgdA%3D%3D',
 			{
 				params
 			}
 		)
 	},
 
-	// 获取右边街道钱10 http://101.132.45.201:18181/sharebikesclean/dispatch/getLastSenvenRank
+	// 获取右边街道钱10 https://bicycle.itcics.com/sharebikesclean/dispatch/getLastSenvenRank
 	getRightTown(): Promise<{}> {
-		return http('http://101.132.45.201:18181/sharebikesclean/dispatch/getLastSenvenRank')
+		return http('https://bicycle.itcics.com/sharebikesclean/dispatch/getLastSenvenRank')
 	},
 	getTownThree(): Promise<{}> {
-		return http('http://101.132.45.201:18181/sharebikesclean/dispatch/selectLastDayDispatchRank')
+		return http('https://bicycle.itcics.com/sharebikesclean/dispatch/selectLastDayDispatchRank')
 	},
-	//右边的工单http://101.132.45.201:18181/sharebikesclean/dispatch/getRecentDisMsg
+	//右边的工单https://bicycle.itcics.com/sharebikesclean/dispatch/getRecentDisMsg
 	getRightTable(): Promise<{}> {
-		return http('http://101.132.45.201:18181/sharebikesclean/dispatch/getRecentDisMsg')
+		return http('https://bicycle.itcics.com/sharebikesclean/dispatch/getRecentDisMsg')
 	},
 	/**
    * 获取页面配置
